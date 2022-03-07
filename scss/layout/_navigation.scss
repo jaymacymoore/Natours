@@ -13,6 +13,18 @@
     right: 6rem;
     z-index: 1000;
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    text-align: center;
+    cursor: pointer;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
+
+    @include respond(tab-port) {
+      top: 3rem;
+      right: 3rem;
+    }
   }
 
   &__background {
@@ -25,6 +37,16 @@
     background-image: radial-gradient($light-green, $dark-green);
     z-index: 500;
     transition: transform 0.8s cubic-bezier(0.83, 0, 0.7, 1);
+
+    @include respond(tab-port) {
+      top: 3.8rem;
+      right: 3.8rem;
+    }
+
+    @include respond(phone) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
   }
 
   &__nav {
@@ -79,6 +101,15 @@
       color: $medium-green;
       transform: translateX(1rem);
     }
+
+    // &:target > &__background > &__nav {
+    //   transform: scale(0);
+    // }
+
+    // &:active::before::before {
+    //   opacity: 0;
+    //   width: 0;
+    // }
   }
 
   // FUNCTIONALITY
@@ -95,5 +126,54 @@
   // ICON
 
   &__icon {
+    position: relative;
+    margin-top: 3.4rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 0.2rem;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }
