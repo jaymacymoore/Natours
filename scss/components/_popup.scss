@@ -10,6 +10,10 @@
   visibility: hidden;
   transition: all 0.3s;
 
+  @include respond(phone) {
+    position: relative;
+  }
+
   &__content {
     @include absolutecenter;
     width: 75%;
