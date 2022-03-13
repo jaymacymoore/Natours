@@ -4,11 +4,20 @@
   "description": "Natours Website",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -w scss/ -o dist/css --recursive"
+    "sass": "node-sass -w scss/ -o dist/css --recursive",
+    "compile": "node-sass scss/main.scss dist/css/style.comp.css",
+    "concat": "concat -o dist/css/style.concat.css dist/css/icon_fonts.css dist/css/style.comp.css",
+    "prefix": "postcss --use autoprefixer -b 'last 10 versions' dist/css/style.concat.css -o dist/css/style.prefix.css",
+    "compress": "node-sass dist/css/style.prefix.css dist/css/style.css --output-style compressed",
+    "build": "npm-run-all compile concat prefix compress"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^7.0.1"
+    "autoprefixer": "^10.4.2",
+    "concat": "^1.0.3",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^9.1.0"
   }
 }

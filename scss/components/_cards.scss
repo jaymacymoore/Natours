@@ -178,7 +178,8 @@
     font-weight: 100;
   }
   // Change Card front and back to just card
-  @include respond(tab-port) {
+  // @include respond(tab-port)
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     height: auto;
     border-radius: $border-radius-slight;
     background-color: $color-white;

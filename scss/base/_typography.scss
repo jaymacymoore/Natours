@@ -20,6 +20,10 @@ body {
     animation: move-in-left 1.5s ease-in;
     backface-visibility: hidden;
 
+    @include respond(tab-port) {
+      letter-spacing: 2rem;
+    }
+
     @include respond(phone) {
       letter-spacing: 1rem;
       font-size: 5rem;
